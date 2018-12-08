@@ -13,5 +13,7 @@ def remove_instances(instances, date):
     for key in instances:
         k = instances[key][date]
         for ins in k:
-            del k[ins]
-        instances[key][date] = {'MESSAGE': 'THIS DATE HAS ALREADY BEEN WRITTEN!'}
+            t = k[ins]
+            k[ins] = None
+            del t
+        instances[key][date] = dict(msg='This Date Has been written to persistent memory!')
